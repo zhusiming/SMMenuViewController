@@ -97,7 +97,10 @@ static SMMenuViewController *single = nil;
         if (_leftViewController.view.superview != nil) {
             [_leftViewController.view removeFromSuperview];
         }
+        
+        [_leftViewController removeFromParentViewController];
         _leftViewController = leftViewController;
+        [self addChildViewController:_leftViewController];
         
         // 把左侧视图控制器的根视图添加到当前是图上
         if (_centerViewController != nil) {
@@ -118,7 +121,9 @@ static SMMenuViewController *single = nil;
             transform = _centerViewController.view.transform;
             [_centerViewController.view removeFromSuperview];
         }
+        [_centerViewController removeFromParentViewController];
         _centerViewController = centerViewController;
+        [self addChildViewController:_centerViewController];
         
         // 设置视图的位置
         _centerViewController.view.transform = transform;
@@ -175,7 +180,10 @@ static SMMenuViewController *single = nil;
         if (_rightViewController.view.superview != nil) {
             [_rightViewController.view removeFromSuperview];
         }
+        
+        [_rightViewController removeFromParentViewController];
         _rightViewController = rightViewController;
+        [self addChildViewController:_rightViewController];
         
         // 把左侧视图控制器的根视图添加到当前是图上
         if (_centerViewController != nil) {
